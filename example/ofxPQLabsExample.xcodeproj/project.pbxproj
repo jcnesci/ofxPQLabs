@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03DCB95F13FB185D004E126E /* PQMTClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03DCB95D13FB185D004E126E /* PQMTClient.a */; };
-		03DCB97013FB19B4004E126E /* ofxPQLabs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03DCB96E13FB19B4004E126E /* ofxPQLabs.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E064221419512BBB00C3F4F6 /* ofxPQLabs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E064221119512BBA00C3F4F6 /* ofxPQLabs.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -59,12 +58,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		03DCB95D13FB185D004E126E /* PQMTClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = PQMTClient.a; sourceTree = "<group>"; };
-		03DCB95E13FB185D004E126E /* PQMTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQMTClient.h; sourceTree = "<group>"; };
-		03DCB96E13FB19B4004E126E /* ofxPQLabs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPQLabs.cpp; sourceTree = "<group>"; };
-		03DCB96F13FB19B4004E126E /* ofxPQLabs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPQLabs.h; sourceTree = "<group>"; };
-		349F809713FEBCE50024A933 /* ofxPQLabsEventTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPQLabsEventTypes.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		E064220E19512BA700C3F4F6 /* PQMTClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PQMTClient.h; sourceTree = "<group>"; };
+		E064221019512BA700C3F4F6 /* libPQMTClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPQMTClient.a; sourceTree = "<group>"; };
+		E064221119512BBA00C3F4F6 /* ofxPQLabs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPQLabs.cpp; sourceTree = "<group>"; };
+		E064221219512BBA00C3F4F6 /* ofxPQLabs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPQLabs.h; sourceTree = "<group>"; };
+		E064221319512BBB00C3F4F6 /* ofxPQLabsEventTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPQLabsEventTypes.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -106,7 +105,6 @@
 				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
-				03DCB95F13FB185D004E126E /* PQMTClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,9 +124,9 @@
 		03DCB90613FB11B1004E126E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				349F809713FEBCE50024A933 /* ofxPQLabsEventTypes.h */,
-				03DCB96E13FB19B4004E126E /* ofxPQLabs.cpp */,
-				03DCB96F13FB19B4004E126E /* ofxPQLabs.h */,
+				E064221119512BBA00C3F4F6 /* ofxPQLabs.cpp */,
+				E064221219512BBA00C3F4F6 /* ofxPQLabs.h */,
+				E064221319512BBB00C3F4F6 /* ofxPQLabsEventTypes.h */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 			);
 			path = src;
@@ -137,8 +135,8 @@
 		03DCB95C13FB185D004E126E /* PQMTClient */ = {
 			isa = PBXGroup;
 			children = (
-				03DCB95D13FB185D004E126E /* PQMTClient.a */,
-				03DCB95E13FB185D004E126E /* PQMTClient.h */,
+				E064220E19512BA700C3F4F6 /* PQMTClient.h */,
+				E064220F19512BA700C3F4F6 /* x86_64 */,
 			);
 			path = PQMTClient;
 			sourceTree = "<group>";
@@ -176,6 +174,14 @@
 				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
 			);
 			name = "3rd party frameworks";
+			sourceTree = "<group>";
+		};
+		E064220F19512BA700C3F4F6 /* x86_64 */ = {
+			isa = PBXGroup;
+			children = (
+				E064221019512BA700C3F4F6 /* libPQMTClient.a */,
+			);
+			path = x86_64;
 			sourceTree = "<group>";
 		};
 		E4328144138ABC890047C5CB /* Products */ = {
@@ -315,7 +321,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				03DCB97013FB19B4004E126E /* ofxPQLabs.cpp in Sources */,
+				E064221419512BBB00C3F4F6 /* ofxPQLabs.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +399,7 @@
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -485,6 +492,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -18,7 +18,7 @@
 #include "PQMTClient.h"
 #include "ofxPQLabsEventTypes.h"
 
-
+using namespace PQ_SDK_MultiTouch;
 
 
 
@@ -32,6 +32,7 @@ public:
 	void connect(const char * ipAddress);
 	ofEvent<SingleTouchGestureEvent> singleTouchGestureEventDispatcher;
 	ofEvent<SingleTouchMoveEvent> singleTouchMoveGestureEventDispatcher;
+  ofEvent<SingleTouchClickEvent> singleTouchClickEventDispatcher;  //SOSO
 	ofEvent<SecondTouchEvent> secondTouchEventDispatcher;
 	ofEvent<SplitEvent> splitEventDispatcher;
 	ofEvent<SplitMoveEvent> splitMoveEventDispatcher;
@@ -87,6 +88,7 @@ private:
 
 	static void onSingleTouchGesture(const TouchGesture & tg,void * call_object);
 	static void onSingleTouchMove(const TouchGesture & tg,void * call_object);
+  static void onSingleTouchClick(const TouchGesture & tg, void * call_object); // SOSO
 	
 	static void onBigTouch(const TouchGesture & tg,void * call_object);
 	
