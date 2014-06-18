@@ -8,13 +8,16 @@
 #include "PQMTClient.h"
 #include "ofMain.h"
 
+using namespace PQ_SDK_MultiTouch;
 
 struct TouchPointEvent
 {
 	TouchPointEvent(TouchPoint tp)
 	{
 		touchPoint = tp;
-	}
+	
+  
+  }
 	TouchPoint touchPoint;
 	
 };
@@ -35,6 +38,22 @@ struct SingleTouchGestureEvent
 	ofPoint point;
 	
 };
+
+// SOSO Adding single touch click event.
+struct SingleTouchClickEvent
+{
+	//	TYPES
+	//	TG_CLICK
+  //  TG_DB_CLICK
+	SingleTouchClickEvent(TouchGesture tg)
+	{
+		touchGesture = tg;
+		point = ofPoint(tg.params[0], tg.params[1]);
+	};
+	TouchGesture touchGesture;
+	ofPoint point;
+};
+
 
 struct SingleTouchMoveEvent
 {

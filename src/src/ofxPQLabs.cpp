@@ -30,7 +30,7 @@ ofxPQLabs::~ofxPQLabs()
 #pragma mark functions
 void ofxPQLabs::connect(const char * ipAddress = "127.0.0.1")
 {
-	int err_code = PQMTE_SUCESS;
+	int err_code = PQMTE_SUCCESS;
 
 	// Initialize Gesture Handlers;
 	initializeFunctionsOnTouchGestures();
@@ -40,17 +40,34 @@ void ofxPQLabs::connect(const char * ipAddress = "127.0.0.1")
 	
 	// connect server
 	ofLog(OF_LOG_VERBOSE, "ofxPQLabs::connect Connecting to server...");
-	if((err_code = ConnectServer(ipAddress)) != PQMTE_SUCESS)
+    
+    
+	if((err_code = ConnectServer(ipAddress)) != PQMTE_SUCCESS)
 	{
+        ofLogNotice("error code is not a success");
+        ofLog(OF_LOG_NOTICE, "err_code is: " + ofToString(err_code));
 		
 		ofLog(OF_LOG_ERROR, "ofxPQLabs::connect could not connect to server"+ofToString(err_code));
 	}else 
 	{
+        
+     
+        
+        ofLog(OF_LOG_NOTICE, "err_code is: " + ofToString(err_code));
 		ofLog(OF_LOG_VERBOSE, "ofxPQLabs::connect Connected to server...");
-		TouchClientRequest tcq = {0};
-		tcq.app_id = GetTrialAppID();
+		
+        
+        TouchClientRequest tcq = {0};
+//		tcq.app_id = GetTrialAppID();     //DEV_soso : this function is deprecated (in PQLabs Mac C++ SDK 'mt_mac_sdk_c_v1.3.7'). It doesn't exist in PQMTClient.h anymore.
+    //ofLogNotice("get trial app id: " + ofToString(tcq.app_id));
+    
 		tcq.type = RQST_RAWDATA_ALL | RQST_GESTURE_ALL;
-		if((err_code = SendRequest(tcq)) != PQMTE_SUCESS)
+		
+        ofLogNotice("tcq type: " + ofToString(tcq.type));
+        
+        ofLogNotice("sending request: " + ofToString(SendRequest(tcq)));
+        
+        if((err_code = SendRequest(tcq)) != PQMTE_SUCCESS)
 		{
 			ofLog(OF_LOG_ERROR, "ofxPQLabs::connect could not send request"+ofToString(err_code));
 		}
@@ -59,14 +76,14 @@ void ofxPQLabs::connect(const char * ipAddress = "127.0.0.1")
 		if (tcq.type == RQST_RAWDATA_INSIDE)
 		{
 			int move_threshold = 1;// 1 pixel
-			if((err_code = SendThreshold(move_threshold) != PQMTE_SUCESS))
+			if((err_code = SendThreshold(move_threshold) != PQMTE_SUCCESS))
 			{
 				ofLog(OF_LOG_ERROR, "ofxPQLabs::connect could not send threshold: Error Code: "+ofToString(err_code));
 			}
 
 		}
 		//get Screen Resolution
-		if((err_code = GetServerResolution(onGetServerResolution, NULL)) != PQMTE_SUCESS)
+		if((err_code = GetServerResolution(onGetServerResolution, NULL)) != PQMTE_SUCCESS)
 		{
 			ofLog(OF_LOG_ERROR, "ofxPQLabs::connect could not get Screen Resolution"+ofToString(err_code));
 		}
@@ -85,6 +102,7 @@ void ofxPQLabs:: initializeFunctionsOnTouchGestures()
 	touchGestureTypes[TG_DOWN] = &ofxPQLabs::onSingleTouchGesture;
 	touchGestureTypes[TG_MOVE] = &ofxPQLabs::onSingleTouchGesture;
 	touchGestureTypes[TG_UP] = &ofxPQLabs::onSingleTouchGesture;
+  touchGestureTypes[TG_CLICK] = &ofxPQLabs::onSingleTouchClick; //SOSO
 	
 	touchGestureTypes[TG_MOVE_RIGHT] = &ofxPQLabs::onSingleTouchMove;
 	touchGestureTypes[TG_MOVE_UP] = &ofxPQLabs::onSingleTouchMove;
@@ -110,8 +128,8 @@ void ofxPQLabs:: initializeFunctionsOnTouchGestures()
 	touchGestureTypes[TG_ROTATE_START] = &ofxPQLabs::onRotate;
 	touchGestureTypes[TG_ROTATE_END] = &ofxPQLabs::onRotate;
 	
-	touchGestureTypes[TG_ROTATE_ANTICLOCK] = &ofxPQLabs::onRotating;
-	touchGestureTypes[TG_ROTATE_CLOCK] = &ofxPQLabs::onRotating;
+	touchGestureTypes[TG_ROTATE_ANTICLOCKWISE] = &ofxPQLabs::onRotating;
+	touchGestureTypes[TG_ROTATE_CLOCKWISE] = &ofxPQLabs::onRotating;
 	
 	
 
@@ -176,6 +194,7 @@ void ofxPQLabs:: onReceivePointFrame(int frame_id, int time_stamp, int moving_po
 
 void ofxPQLabs:: onReceiveGesture(const TouchGesture & ges, void * call_back_object)
 {
+    ofLog(OF_LOG_VERBOSE, "ofxPQLabs:: onReceiveGesture called");
 	ofxPQLabs * connection = static_cast<ofxPQLabs*>(call_back_object);
 	connection->onTouchGesture(ges);
 }
@@ -189,6 +208,7 @@ void ofxPQLabs:: onServerBreak(void * param, void * call_back_object)
 
 void ofxPQLabs::onReceiveError(int err_code, void * call_back_object)
 {
+    ofLog(OF_LOG_VERBOSE, "ofxPQLabs:: onReceiveError called");
 	switch(err_code)
 	{
 	case PQMTE_RCV_INVALIDATE_DATA:
@@ -213,6 +233,7 @@ void ofxPQLabs:: onGetServerResolution(int x, int y, void * call_back_object)
 //	you can do mouse map like "onTG_Down" etc;
 void ofxPQLabs:: onTouchPoint(const TouchPoint & touchPoint)
 {
+    ofLog(OF_LOG_VERBOSE, "ofxPQLabs:: onTouchPoint called");
 	TouchPointEvent event(touchPoint);
 	ofNotifyEvent(touchEventDispatcher, event);
 	stringstream ss;
@@ -283,6 +304,16 @@ void ofxPQLabs:: onSingleTouchMove(const TouchGesture & tg, void * call_object)
 	ofxPQLabs* labsInstance = static_cast<ofxPQLabs*>(call_object);
 	ofNotifyEvent(labsInstance->singleTouchMoveGestureEventDispatcher, event);
 }
+
+//SOSO
+#pragma mark Gesture Callbacks: Single Click
+void ofxPQLabs:: onSingleTouchClick(const TouchGesture & tg, void * call_object)
+{
+	SingleTouchClickEvent event(tg);
+	ofxPQLabs* labsInstance = static_cast<ofxPQLabs*>(call_object);
+	ofNotifyEvent(labsInstance->singleTouchClickEventDispatcher, event);
+}
+
 
 #pragma mark Gesture Callbacks: Second Down 
 void ofxPQLabs:: onSecondTouch(const TouchGesture & tg, void * call_object)

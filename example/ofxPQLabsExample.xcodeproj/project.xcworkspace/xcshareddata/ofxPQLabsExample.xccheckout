@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>BD8022A8-4795-4008-BF39-8F4F17731BDB</string>
+	<string>B3005003-1D56-4EB2-97AD-4A904DA8A830</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ofxPQLabsExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2B7E6A30-59C1-4A7F-8A7C-B7E0726BFF62</key>
-		<string>ssh://github.com/sosolimited/ofxPQLabs.git</string>
+		<key>A25B8552-2C58-4C86-81B1-EB9BDE9CA436</key>
+		<string>https://github.com/jcnesci/ofxPQLabs.git</string>
 		<key>E7772786-25B7-44AD-AF1B-F471002DFB7C</key>
 		<string>https://github.com/jcnesci/openFrameworks.git</string>
 	</dict>
@@ -19,13 +19,13 @@
 	<string>addons/ofxPQLabs/example/ofxPQLabsExample.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2B7E6A30-59C1-4A7F-8A7C-B7E0726BFF62</key>
+		<key>A25B8552-2C58-4C86-81B1-EB9BDE9CA436</key>
 		<string>../../..</string>
 		<key>E7772786-25B7-44AD-AF1B-F471002DFB7C</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/sosolimited/ofxPQLabs.git</string>
+	<string>https://github.com/jcnesci/ofxPQLabs.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -36,7 +36,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2B7E6A30-59C1-4A7F-8A7C-B7E0726BFF62</string>
+			<string>A25B8552-2C58-4C86-81B1-EB9BDE9CA436</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxPQLabs</string>
 		</dict>
