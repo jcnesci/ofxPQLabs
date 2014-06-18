@@ -1,12 +1,12 @@
-ofxPQLabs
+ofxPQLabs-64bit
 =============================
 
 ### Original version
-Original 32bit verison by jvcleave:  
+Original 32bit verison (the master branch here) was created by jvcleave:  
 https://github.com/jvcleave/ofxPQLabs
 
 ### This version
-This version has a 64bit branch by Sosolimited.
+This branch is a 64bit version by Sosolimited.
 It must be run on a 64bit openframeworks install:  
 https://github.com/prisonerjohn/openFrameworks/tree/feature-64bit
 
